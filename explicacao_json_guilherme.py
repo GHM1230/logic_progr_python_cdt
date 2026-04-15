@@ -27,32 +27,34 @@ def gerenciar_projeto():
     if not arquivos:
         return
     
-    escolha = int(input("\nEscolha um numero do projeto para gerenciar (ou '0' para voltar): "))
+    try:
+
+        escolha = int(input("\nEscolha um numero do projeto para gerenciar (ou '0' para voltar): "))
     
-    if escolha == 0:
-        return
+        if escolha == 0:
+            return
     
-    nome_arquivo = arquivos[escolha - 1]
-    caminho = f"uploads_projetos/{nome_arquivo}"
+        nome_arquivo = arquivos[escolha - 1]
+        caminho = f"uploads_projetos/{nome_arquivo}"
 
-    with open(caminho, "r", encoding="utf-8") as f:
-        dados = json.load(f)
+        with open(caminho, "r", encoding="utf-8") as f:
+            dados = json.load(f)
 
-    print(f"\n---Dados Atuais---")
-    print(f"aluno: {dados['aluno']}")
-    print(f"projeto: {dados['projeto']}")
+        print(f"\n---Dados Atuais---")
+        print(f"aluno: {dados['aluno']}")
+        print(f"projeto: {dados['projeto']}")
 
-    confirmar = input("\nDeseja alterar as informações do projeto? (s/n): ").lower()
+        confirmar = input("\nDeseja alterar as informações do projeto? (s/n): ").lower()
 
-    if confirmar == 's':
-        dados['aluno'] = input(f"Novo nome [{dados['aluno']}]: ")
-        dados['projeto'] = input("Novo resumo: ") or dados['projeto']
+        if confirmar == 's':
+            dados['aluno'] = input(f"Novo nome [{dados['aluno']}]: ")
+            dados['projeto'] = input("Novo resumo: ") or dados['projeto']
 
-        with open(caminho, "w", encoding="utf-8") as f:
-            json.dump(dados, f, ensure_ascii=False, indent=4)
-        print("Projeto atualizado com sucesso!")
+            with open(caminho, "w", encoding="utf-8") as f:
+                json.dump(dados, f, ensure_ascii=False, indent=4)
+            print("Projeto atualizado com sucesso!")
 
-    else:
+    except (ValueError, IndexError):
         print("[ERRO] Escolha inválida. voltando ao menu.")
 
 def fazer_upload_json():
