@@ -28,7 +28,7 @@ class Celular:
 
     def ligar(self):
         self.ligado = True
-        print(f'O {self.marca} {self.modelo} está ligado.')
+        print(f'O {self.marca} {self.modelo está ligado.')
 
     def carregar(self):
         self.bateria = 100
