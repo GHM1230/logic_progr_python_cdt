@@ -1,4 +1,4 @@
-'''
+
 class Carro:
     def __init__(self,marca ,cor ):
         self.marca = marca
@@ -15,8 +15,6 @@ meu_carro.buzinar()
 carro_cliente.buzinar()
 
 EXERCICIO PRATICO: SIMULE UM CARREGAMENTO DE UM SMARTPHONE, quando estiver a 5%,mensagem, quando estiver 85%, avise que esta carregado.
-
-'''
 
 class Celular:
 
